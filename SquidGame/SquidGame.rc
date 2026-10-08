@@ -1,0 +1,20 @@
+#include "resource.h"
+#include <afxres.h>
+
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit", ID_APP_EXIT
+    END
+END
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "Squid Game Composite"
+END
