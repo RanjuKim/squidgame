@@ -38,9 +38,19 @@ bool ComposeSquidImage(CxImage& head, CxImage& body, CxImage& points, CxImage& r
             RGBQUAD bodyColor   = body.GetPixelColor(x, y);
             RGBQUAD pointsColor = points.GetPixelColor(x, y);
 
-            int r = (int)headColor.rgbRed   + (int)bodyColor.rgbRed   - (int)pointsColor.rgbRed;
-            int g = (int)headColor.rgbGreen + (int)bodyColor.rgbGreen - (int)pointsColor.rgbGreen;
-            int b = (int)headColor.rgbBlue  + (int)bodyColor.rgbBlue  - (int)pointsColor.rgbBlue;
+            // Step 1: add squid_head and squid_body.
+            int r = (int)headColor.rgbRed   + (int)bodyColor.rgbRed;
+            int g = (int)headColor.rgbGreen + (int)bodyColor.rgbGreen;
+            int b = (int)headColor.rgbBlue  + (int)bodyColor.rgbBlue;
+
+            r = ClampToByte(r);
+            g = ClampToByte(g);
+            b = ClampToByte(b);
+
+            // Step 2: subtract squid_points from the result of step 1.
+            r = r - (int)pointsColor.rgbRed;
+            g = g - (int)pointsColor.rgbGreen;
+            b = b - (int)pointsColor.rgbBlue;
 
             RGBQUAD newColor;
             newColor.rgbRed      = ClampToByte(r);
