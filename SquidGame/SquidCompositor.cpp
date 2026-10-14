@@ -56,7 +56,7 @@ bool ComposeSquidImage(CxImage& head, CxImage& body, CxImage& points, CxImage& r
             newColor.rgbRed      = ClampToByte(r);
             newColor.rgbGreen    = ClampToByte(g);
             newColor.rgbBlue     = ClampToByte(b);
-            newColor.rgbReserved = 255;
+            newColor.rgbReserved = 0;
 
             result.SetPixelColor(x, y, newColor);
         }

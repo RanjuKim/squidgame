@@ -10,10 +10,6 @@ BEGIN_MESSAGE_MAP(CSquidGameApp, CWinApp)
     ON_COMMAND(ID_APP_EXIT, &CWinApp::OnAppExit)
 END_MESSAGE_MAP()
 
-CSquidGameApp::CSquidGameApp()
-{
-}
-
 CSquidGameApp theApp;
 
 BOOL CSquidGameApp::InitInstance()
@@ -21,8 +17,6 @@ BOOL CSquidGameApp::InitInstance()
     CWinApp::InitInstance();
 
     CMainFrame* pFrame = new CMainFrame;
-    if (!pFrame)
-        return FALSE;
     m_pMainWnd = pFrame;
 
     if (!pFrame->LoadFrame(IDR_MAINFRAME))

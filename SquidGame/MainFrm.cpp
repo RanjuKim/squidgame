@@ -18,10 +18,6 @@ CMainFrame::CMainFrame()
 {
 }
 
-CMainFrame::~CMainFrame()
-{
-}
-
 int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
     if (CFrameWnd::OnCreate(lpCreateStruct) == -1)
@@ -31,14 +27,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
     ResizeToImage();
 
     return 0;
-}
-
-BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
-{
-    if (!CFrameWnd::PreCreateWindow(cs))
-        return FALSE;
-
-    return TRUE;
 }
 
 CString CMainFrame::GetAppDirectory() const

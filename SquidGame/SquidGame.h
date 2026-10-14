@@ -9,9 +9,6 @@
 class CSquidGameApp : public CWinApp
 {
 public:
-    CSquidGameApp();
-
-public:
     virtual BOOL InitInstance();
 
     DECLARE_MESSAGE_MAP()

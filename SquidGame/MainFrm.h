@@ -18,10 +18,6 @@ private:
     void    LoadAndCompose();
     void    ResizeToImage();
 
-public:
-    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-    virtual ~CMainFrame();
-
 protected:
     afx_msg int  OnCreate(LPCREATESTRUCT lpCreateStruct);
     afx_msg void OnPaint();
