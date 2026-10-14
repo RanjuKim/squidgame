@@ -82,9 +82,18 @@ void CMainFrame::ResizeToImage()
     }
 
     CRect rcWindow(0, 0, (int)m_imgResult.GetWidth(), (int)m_imgResult.GetHeight());
-    ::AdjustWindowRect(&rcWindow, GetStyle(), FALSE);
+    ::AdjustWindowRect(&rcWindow, GetStyle(), GetMenu() != NULL);
 
     SetWindowPos(NULL, 0, 0, rcWindow.Width(), rcWindow.Height(), SWP_NOZORDER | SWP_NOMOVE);
+
+    // AdjustWindowRect can be off by a few pixels on high-DPI displays,
+    // so grow the window by whatever the client area is still missing.
+    CRect rcClient;
+    GetClientRect(&rcClient);
+    int dx = (int)m_imgResult.GetWidth()  - rcClient.Width();
+    int dy = (int)m_imgResult.GetHeight() - rcClient.Height();
+    if (dx != 0 || dy != 0)
+        SetWindowPos(NULL, 0, 0, rcWindow.Width() + dx, rcWindow.Height() + dy, SWP_NOZORDER | SWP_NOMOVE);
 }
 
 void CMainFrame::OnPaint()
